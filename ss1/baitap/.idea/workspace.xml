@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96bb4945-f518-416e-b4c9-6c3e06b74ad2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CurrencyConverterApp/src/main/java/com/example/currencyconverterapp/controller/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CurrencyConverterApp/src/main/java/com/example/currencyconverterapp/controller/Dictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CurrencyConverterApp/src/main/webapp/WEB-INF/views/dictionary.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CurrencyConverterApp/src/main/webapp/WEB-INF/views/result.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../thuchanh/SpringGreeting/src/main/java/com/example/springgreeting/SpringGreeting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../thuchanh/SpringGreeting/src/main/webapp/WEB-INF/views/hello.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../thuchanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/customer-management" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,19 +20,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/codegym/Module4/ss1/baitap/CurrencyConverterApp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/codegym/Module4/ss1/baitap/CurrencyConverterApp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,6 +43,7 @@
       <updated>1682579404799</updated>
       <workItem from="1682579405597" duration="50000" />
       <workItem from="1682585907138" duration="696000" />
+      <workItem from="1682646082826" duration="20000" />
     </task>
     <servers />
   </component>
