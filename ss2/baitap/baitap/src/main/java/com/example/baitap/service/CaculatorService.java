@@ -11,6 +11,16 @@ public class CaculatorService implements ICaculatorService {
     ICaculatorRepository iCondimentRepository ;
     @Override
     public int result(String type, int number1, int number2) {
-        return iCondimentRepository.result(type,number1,number2);
+        switch (type) {
+            case "Addition":
+                return number1 + number2;
+            case "Subtraction":
+                return number1 - number2;
+            case "Multiplication":
+                return number1*number2;
+            case "Division":
+                return number1/number2;
+        }
+        return 0;
     }
 }
