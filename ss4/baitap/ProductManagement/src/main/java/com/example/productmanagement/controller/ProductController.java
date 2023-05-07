@@ -38,8 +38,8 @@ public class ProductController {
     }
 
 
-    @GetMapping("/{id}/delete")
-    public String delete(@PathVariable int id , Model model){
+    @GetMapping("/delete")
+    public String delete(@RequestParam(value = "id") int id ){
         iProductService.delete(id);
         return "redirect:/product";
     }

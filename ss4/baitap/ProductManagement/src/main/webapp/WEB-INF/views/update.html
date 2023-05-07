@@ -10,30 +10,39 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<nav>
+    <ul class="nav nav-tabs|pills" id="navId">
+        <li class="nav-item">
+            <ion-icon name="home-outline" type="button" onclick="window.location = '/product'"></ion-icon>
+        </li>
+    </ul>
+</nav>
+<h1 style="text-align: center">Form Update</h1>
 <div class="container">
     <form action="/product/update-product" method="post" th:object="${product}">
         <input type="hidden" th:field="*{id}">
-        <div class="input-group">
-            <label for="name">Name : </label>
-            <input type="text"
-                   class="form-control" id="name" aria-describedby="helpId" th:field="*{name}">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Name</span>
+            <input type="text" class="form-control" placeholder="Nhập tên" aria-label="Username" aria-describedby="basic-addon1" th:field="*{name}">
         </div>
-        <div class="input-group">
-            <label for="date">Date : </label>
-            <input type="text"
-                   class="form-control" id="date" aria-describedby="helpId" th:field="*{date}">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2">Date</span>
+            <input type="text" class="form-control" placeholder="Nhập tên" aria-label="Username" aria-describedby="basic-addon1" th:field="*{date}">
         </div>
-        <div class="input-group">
-            <label for="detail">Detail : </label>
-            <input type="text"
-                   class="form-control" id="detail" aria-describedby="helpId" th:field="*{detail}">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Detail</span>
+            <input type="text" class="form-control" placeholder="Nhập tên" aria-label="Username" aria-describedby="basic-addon1" th:field="*{detail}">
         </div>
         <input class="btn btn-secondary" type="submit"
                value="Update">
+        <input class="btn btn-secondary" type="reset"
+               value="Cancel">
+
     </form>
 </div>
 </body>

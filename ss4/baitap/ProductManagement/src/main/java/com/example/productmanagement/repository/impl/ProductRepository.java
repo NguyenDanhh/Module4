@@ -1,17 +1,20 @@
-package com.example.productmanagement.repository;
+package com.example.productmanagement.repository.impl;
 
 import com.example.productmanagement.model.Product;
+import com.example.productmanagement.repository.IProductRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
-public class ProductRepository implements IProductRepository{
-    private final List<Product> list = new ArrayList<Product>(){{
-        add(new Product(1,"Laptop","15/2/2020" , "mau xanh"));
-        add(new Product(2,"Iphone","15/2/2020" , "mau den"));
-        add(new Product(3,"Samsung","15/2/2020" , "mau do"));
+public class ProductRepository implements IProductRepository {
+    private final List<Product> list = new ArrayList<Product>() {{
+        add(new Product(1, "Laptop", "15/2/2020", "mau xanh"));
+        add(new Product(2, "Iphone", "15/2/2020", "mau den"));
+        add(new Product(3, "Samsung", "15/2/2020", "mau do"));
     }};
+
     @Override
     public List<Product> findAll() {
         return list;
@@ -28,8 +31,8 @@ public class ProductRepository implements IProductRepository{
 
     @Override
     public void update(Product product) {
-        for (Product element: list) {
-            if(product.getId() == element.getId()){
+        for (Product element : list) {
+            if (product.getId() == element.getId()) {
                 element.setName(product.getName());
                 element.setDate(product.getDate());
                 element.setDetail(product.getDetail());
@@ -39,7 +42,12 @@ public class ProductRepository implements IProductRepository{
 
     @Override
     public void delete(int id) {
-        list.remove(id);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id) {
+                list.remove(i);
+                return;
+            }
+        }
     }
 
     @Override
