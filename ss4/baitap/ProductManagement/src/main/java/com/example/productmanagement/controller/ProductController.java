@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.WebParam;
-
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -55,5 +53,10 @@ public class ProductController {
     public String update(@ModelAttribute Product product){
         iProductService.update(product);
         return "redirect:/product";
+    }
+    @GetMapping("search-product")
+    public String search(@RequestParam(value = "nameProduct")String nameProduct){
+        iProductService.findByName(nameProduct);
+        return "list";
     }
 }

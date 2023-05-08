@@ -22,11 +22,12 @@
     <li class="nav-item">
         <ion-icon name="home-outline" type="button" onclick="window.location = '#'"></ion-icon>
     </li>
-
-    <li class="nav-item">
-        <input type="text">
-        <ion-icon name="search-outline"></ion-icon>
-    </li>
+    <form action="/product/search-product">
+        <li class="nav-item">
+            <input type="text" name="nameProduct">
+            <button type="submit"><ion-icon name="search-outline" ></ion-icon></button>
+        </li>
+    </form>
 
 </ul>
 <div>
@@ -61,7 +62,7 @@
             <td>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modelId"
-                        th:attr="onclick=|upload('${element.getId()}','${element.getName()}')|">
+                        th:attr="onclick=|upload('${element.getId()}','${element.getName()}')|" style="height: 37px">
                     Delete
                 </button>
             </td>

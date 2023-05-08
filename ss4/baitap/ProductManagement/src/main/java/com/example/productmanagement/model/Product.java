@@ -1,7 +1,15 @@
 package com.example.productmanagement.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
+    @Column(nullable = false )
     private String name;
     private String date;
     private String detail;
