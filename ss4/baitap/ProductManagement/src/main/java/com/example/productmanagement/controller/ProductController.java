@@ -55,8 +55,8 @@ public class ProductController {
         return "redirect:/product";
     }
     @GetMapping("search-product")
-    public String search(@RequestParam(value = "nameProduct")String nameProduct){
-        iProductService.findByName(nameProduct);
+    public String search(@RequestParam(value = "nameProduct")String nameProduct ,Model model){
+        model.addAttribute("listProduct",iProductService.findByName(nameProduct));
         return "list";
     }
 }

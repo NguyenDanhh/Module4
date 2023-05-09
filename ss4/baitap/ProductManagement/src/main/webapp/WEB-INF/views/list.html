@@ -20,11 +20,12 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs|pills" id="navId">
     <li class="nav-item">
-        <ion-icon name="home-outline" type="button" onclick="window.location = '#'"></ion-icon>
+        <ion-icon name="home-outline" type="button" onclick="window.location = '/product'"></ion-icon>
     </li>
+
     <form action="/product/search-product">
-        <li class="nav-item">
-            <input type="text" name="nameProduct">
+        <li class="nav-item ">
+            <input type="text" name="nameProduct" class="auto-search">
             <button type="submit"><ion-icon name="search-outline" ></ion-icon></button>
         </li>
     </form>
@@ -62,7 +63,7 @@
             <td>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modelId"
-                        th:attr="onclick=|upload('${element.getId()}','${element.getName()}')|" style="height: 37px">
+                        th:attr="onclick=|upload('${element.getId()}','${element.getName()}')|" style="font-size: inherit">
                     Delete
                 </button>
             </td>
