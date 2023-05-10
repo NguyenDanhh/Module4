@@ -24,8 +24,9 @@
     </div>
 </nav>
 <div class="container">
-    <h1 style="text-align: center">Form Create Blog</h1>
-    <form action="/blogs/create-blog" method="post" th:object="${blog}">
+    <h1 style="text-align: center">Form Update Blog</h1>
+    <form action="/blogs/update-blog" method="post" th:object="${blog}">
+        <input type="hidden" th:field="*{id}">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Name Blog</span>
             <input type="text" class="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" th:field="*{name}">

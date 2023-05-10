@@ -31,13 +31,12 @@ public class BlogService implements IBlogService {
 
     @Override
     public void delete(int id) {
-//        this.blogRepository.delete();
+        this.blogRepository.delete(findById(id));
     }
 
     @Override
     public Blog findById(int id) {
-        return null;
+        return blogRepository.findById(id).get();
     }
-
 
 }

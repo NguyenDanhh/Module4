@@ -25,7 +25,8 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(String name, String date, String detail, Category category) {
+    public Blog(int id, String name, String date, String detail, Category category) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.detail = detail;
@@ -34,6 +35,14 @@ public class Blog {
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
