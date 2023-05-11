@@ -20,12 +20,12 @@ public class User {
     private String phoneNumber;
 
     @Column(name = "age")
-    private Date age;
+    private int age;
 
     @Column(name = "email")
     private String email;
 
-    public User(int id, String firstName, String lastName, String phoneNumber, Date age, String email) {
+    public User(int id, String firstName, String lastName, String phoneNumber, int age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,11 +69,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Date age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

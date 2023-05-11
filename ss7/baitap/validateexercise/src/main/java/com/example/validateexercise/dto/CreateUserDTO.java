@@ -5,30 +5,29 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.persistence.Column;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 public class CreateUserDTO implements Validator {
-    @Min(value = 5 ,message = "Nhập ít nhất là 5 ký tự")
-    @Max(45)
+    private int id ;
     @NotBlank(message = "Mời nhập tên ")
+    @Size(message = "Lớn hơn 5 và bé hơn 45 ký tự")
     private String firstName;
 
-    @Min(5)
-    @Max(45)
     @NotBlank(message = "Mời nhập tên " )
+    @Size(message = "Lớn hơn 5 và bé hơn 45 ký tự")
     private String lastName;
 
-    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})$")
+    @NotBlank
+    @Size(min = 10, max = 11, message = "Nhập số điện thoại lớn hơn 10 và bé hơn 11 số")
+    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})$" , message = "Mời nhập đúng định dạng (84)xxxxxxxxxx")
     private String phoneNumber;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Min(value = 16, message = "Độ tuổi loớn hơn 16")
     private Date age;
 
    @NotBlank(message = "Nhập email")
+   @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]+", message = "Nhập đuungs định dạng vd :abc@gmail.com")
     private String email;
 
     public CreateUserDTO() {
@@ -40,6 +39,14 @@ public class CreateUserDTO implements Validator {
         this.phoneNumber = phoneNumber;
         this.age = age;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
