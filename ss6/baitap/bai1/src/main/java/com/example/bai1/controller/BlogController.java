@@ -4,6 +4,8 @@ import com.example.bai1.model.Blog;
 import com.example.bai1.service.IBlogService;
 import com.example.bai1.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +20,8 @@ public class BlogController {
     private ICategoryService categoryService;
 
     @GetMapping()
-    public String findAll(Model model) {
-        model.addAttribute("listBlogs", blogService.findAll());
+    public String findAll(@PageableDefault(size = 1) Pageable pageable, Model model) {
+        model.addAttribute("listBlogs", blogService.findAll(pageable));
         return "/blogs/list";
     }
 
