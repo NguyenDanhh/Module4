@@ -23,11 +23,11 @@ public class CreateUserDTO implements Validator {
     @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})$" , message = "Mời nhập đúng định dạng (84)xxxxxxxxxx")
     private String phoneNumber;
 
-    @Min(value = 16, message = "Độ tuổi loớn hơn 16")
+    @Min(value = 18, message = "Độ tuổi lớn hơn 18")
     private Date age;
 
    @NotBlank(message = "Nhập email")
-   @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]+", message = "Nhập đuungs định dạng vd :abc@gmail.com")
+   @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]+", message = "Nhập đúng định dạng vd :abc@gmail.com")
     private String email;
 
     public CreateUserDTO() {
