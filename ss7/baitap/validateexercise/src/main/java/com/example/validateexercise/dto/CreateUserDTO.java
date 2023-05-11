@@ -20,7 +20,7 @@ public class CreateUserDTO implements Validator {
 
     @NotBlank
     @Size(min = 10, max = 11, message = "Nhập số điện thoại lớn hơn 10 và bé hơn 11 số")
-    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})$" , message = "Mời nhập đúng định dạng (84)xxxxxxxxxx")
+    @Pattern(regexp = "^([0-9]{10})$")
     private String phoneNumber;
 
     @Min(value = 18, message = "Độ tuổi lớn hơn 18")
