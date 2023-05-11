@@ -20,41 +20,36 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/blogs">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/categorys">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/categorys">Category</a>
+                    <a class="nav-link" href="/blogs">Blog</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <h1 style="text-align: center">Blog Management</h1>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/blogs/form-create'">Create</button>
+    <h1 style="text-align: center">Category Management</h1>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/categorys/form-create'">Create</button>
     <table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse">
         <thead class="thead-inverse|thead-default">
         <tr>
-            <th>Name Blog</th>
-            <th>Date</th>
-            <th>Detail</th>
-            <th>Category</th>
-            <th>Heaviness</th>
+            <th>Name Category</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="blog , iterStat:${listBlogs}">
-            <td scope="row" th:text="${blog.getName()}"></td>
-            <td scope="row" th:text="${blog.getDate()}"></td>
-            <td scope="row" th:text="${blog.getDetail()}"></td>
-            <td scope="row" th:text="${blog.getCategory().getNameCategory()}"></td>
+        <tr th:each="category , iterStat:${listCategory}">
+            <td scope="row" th:text="${category.getNameCategory()}"></td>
+
             <td>
                 <button type="button" class="btn btn-secondary">
-                    <a th:href="@{/blogs/form-update/{id}(id=${blog.getId()})}"
+                    <a th:href="@{/categorys/form-update/{id}(id=${category.getId()})}"
                        style="color: white ; text-decoration: none">Update</a>
                 </button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modelId"
-                        th:attr="onclick=|getIdDelete('${blog.getId}','${blog.getName}')|">
+                        th:attr="onclick=|getIdDelete('${category.getId}','${category.getNameCategory}')|">
                     Delete
                 </button>
             </td>
@@ -63,12 +58,12 @@
 
     </table>
     <div>
-        <a th:href="@{/blogs/(page=${listBlogs.number - 1})}" th:if="${listBlogs.hasPrevious()}">Previous</a>
+        <a th:href="@{/categorys/(page=${listCategory.number - 1})}" th:if="${listCategory.hasPrevious()}">Previous</a>
 
-        <span th:text="${listBlogs.number+1}"></span> /
-        <span th:text="${listBlogs.totalPages}"></span>
+        <span th:text="${listCategory.number+1}"></span> /
+        <span th:text="${listCategory.totalPages}"></span>
 
-        <a th:href="@{/blogs/(page=${listBlogs.number+1})}" th:if="${listBlogs.hasNext()}">Next</a>
+        <a th:href="@{/categorys/(page=${listCategory.number+1})}" th:if="${listCategory.hasNext()}">Next</a>
     </div>
 </div>
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -84,7 +79,7 @@
                 Bạn có muôn xóa <span id="nameDelete" style="color: red"></span> không ?
             </div>
             <div class="modal-footer">
-                <form action="/blogs/delete-blog">
+                <form action="/categorys/delete-category">
                     <input type="hidden" id="idDelete" name="id">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">Delete</button>

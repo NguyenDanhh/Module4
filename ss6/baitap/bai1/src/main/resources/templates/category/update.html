@@ -21,37 +21,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/blogs">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/categorys">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/categorys">Category</a>
+                    <a class="nav-link" href="/blogs">Blog</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <h1 style="text-align: center">Form Update Blog</h1>
-    <form action="/blogs/update-blog" method="post" th:object="${blog}">
+    <h1 style="text-align: center">Form Update Category</h1>
+    <form action="/categorys/update-category" method="post" th:object="${category}">
         <input type="hidden" th:field="*{id}">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Name Blog</span>
-            <input type="text" class="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" th:field="*{name}">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon2">date of manufacture</span>
-            <input type="text" class="form-control" placeholder="Enter Date of manufacture" aria-label="Username" aria-describedby="basic-addon1" th:field="*{date}">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Detail</span>
-            <input type="text" class="form-control" placeholder="Enter blog detail" aria-label="Username" aria-describedby="basic-addon1" th:field="*{detail}">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon4">Category</span>
-            <select th:field="*{category}">
-                <option th:each="category,iterStats: ${listCategory}" th:value="${category.getId()}"
-                        th:text="${category.getNameCategory()}"></option>
-            </select>
+            <span class="input-group-text" id="basic-addon1">Name Category</span>
+            <input type="text" class="form-control" placeholder="Enter name" aria-label="Username" aria-describedby="basic-addon1" th:field="*{nameCategory}">
         </div>
         <input class="btn btn-secondary" type="submit"
                value="Save">
