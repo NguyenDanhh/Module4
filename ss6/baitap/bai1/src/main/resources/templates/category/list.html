@@ -60,7 +60,7 @@
     <div>
         <a th:href="@{/categorys/(page=${listCategory.number - 1})}" th:if="${listCategory.hasPrevious()}">Previous</a>
 
-        <span th:text="${listCategory.number+1}"></span> /
+        <span th:text="${listCategory.number+1}"></span>
         <span th:text="${listCategory.totalPages}"></span>
 
         <a th:href="@{/categorys/(page=${listCategory.number+1})}" th:if="${listCategory.hasNext()}">Next</a>

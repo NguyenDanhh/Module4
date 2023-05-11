@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/users/create" method="post" th:object="${user}">
+    <div>
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" th:field="*{firstName}"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{firstName}"></span>
+    </div>
+    <div>
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" th:field="*{lastName}"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{lastName}"></span>
+    </div>
+    <div>
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" th:field="*{phoneNumber}"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{phoneNumber}"></span>
+    </div>
+    <div>
+
+        <label for="age">Age</label>
+        <input type="datetime-local" id="age" th:field="*{age}"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{age}"></span>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{email}"></span>
+    </div>
+    <div>
+        <input type="submit"></div>
+</form>
+</body>
+</html>
