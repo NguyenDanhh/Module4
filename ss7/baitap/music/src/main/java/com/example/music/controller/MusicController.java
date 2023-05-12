@@ -35,8 +35,9 @@ public class MusicController {
     }
 
     @PostMapping("save-music")
-    public String saveMusic(@Validated @ModelAttribute MusicDTO music, BindingResult bindingResult) {
+    public String saveMusic(@Validated @ModelAttribute(value = "music") MusicDTO music, BindingResult bindingResult , Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("music" ,music );
             return "formUpdateAndCreate";
         }
         musicService.save(music);

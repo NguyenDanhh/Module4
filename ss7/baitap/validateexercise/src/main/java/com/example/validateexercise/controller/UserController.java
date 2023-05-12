@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.Period;
+
 
 @Controller
 @RequestMapping("/users")
@@ -26,6 +28,8 @@ public class UserController {
 
     @GetMapping
     public String getUsers(Model model , Pageable pageable){
+
+        model.addAttribute("userDTO" , new CreateUserDTO());
         model.addAttribute("listUser" , userService.findAll(pageable));
         return "list";
     }
@@ -38,13 +42,15 @@ public class UserController {
 
     @PostMapping("/create")
     public String create(@Validated @ModelAttribute(name = "user") CreateUserDTO userDTO ,
-                         BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-           return "create";
+                         BindingResult bindingResult,Model model){
+        new CreateUserDTO().validate(userDTO,bindingResult);
+        if(bindingResult.hasErrors()){
+            model.addAttribute("user" , userDTO);
+            return "create";
         }
         User user = new User();
         BeanUtils.copyProperties(userDTO , user);
-        this.userService.create(user);
+        userService.create(user);
         return "redirect:/users";
     }
 

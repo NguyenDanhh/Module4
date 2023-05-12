@@ -1,12 +1,11 @@
 package com.example.validateexercise.dto;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.persistence.Column;
 import javax.validation.constraints.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class CreateUserDTO implements Validator {
     private int id ;
@@ -22,9 +21,10 @@ public class CreateUserDTO implements Validator {
     @Size(min = 10, max = 11, message = "Nhập số điện thoại lớn hơn 10 và bé hơn 11 số")
     @Pattern(regexp = "^([0-9]{10})$")
     private String phoneNumber;
-
+    @NotNull
+    @NotBlank
     @Min(value = 18, message = "Độ tuổi lớn hơn 18")
-    private Date age;
+    private String age;
 
    @NotBlank(message = "Nhập email")
    @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]+", message = "Nhập đúng định dạng vd :abc@gmail.com")
@@ -33,13 +33,6 @@ public class CreateUserDTO implements Validator {
     public CreateUserDTO() {
     }
 
-    public CreateUserDTO(String firstName, String lastName, String phoneNumber, Date age, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.age = age;
-        this.email = email;
-    }
 
     public int getId() {
         return id;
@@ -73,11 +66,11 @@ public class CreateUserDTO implements Validator {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Date age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -96,6 +89,14 @@ public class CreateUserDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        CreateUserDTO userDTO = (CreateUserDTO) target;
 
+        LocalDate dayOfBirth=LocalDate.parse(userDTO.getAge());
+        LocalDate now=LocalDate.now();
+        int age= Period.between(now,dayOfBirth).getYears();
+        if (age < 18) {
+            errors.rejectValue("age", "age", "tuoi khong duoc nho hon 18");
+        }
     }
+
 }

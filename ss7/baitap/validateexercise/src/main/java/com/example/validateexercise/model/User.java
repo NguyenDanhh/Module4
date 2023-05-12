@@ -1,6 +1,7 @@
 package com.example.validateexercise.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,12 +21,12 @@ public class User {
     private String phoneNumber;
 
     @Column(name = "age")
-    private int age;
+    private String age;
 
     @Column(name = "email")
     private String email;
 
-    public User(int id, String firstName, String lastName, String phoneNumber, int age, String email) {
+    public User(int id, String firstName, String lastName, String phoneNumber, String age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,11 +70,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
