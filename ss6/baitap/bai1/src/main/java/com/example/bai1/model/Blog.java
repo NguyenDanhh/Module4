@@ -19,7 +19,10 @@ public class Blog {
     private String detail;
 
     @ManyToOne
-    @JoinColumn(name = "id_category" , referencedColumnName = "id")
+    @JoinTable(name = "address_person", //Tạo ra một join Table tên là "address_person"
+            joinColumns = @JoinColumn(name = "address_id"),  // TRong đó, khóa ngoại chính là address_id trỏ tới class hiện tại (Address)
+            inverseJoinColumns = @JoinColumn(name = "person_id") //Khóa ngoại thứ 2 trỏ tới thuộc tính ở dưới (Person)
+    )
     private Category category;
 
     public Blog() {
