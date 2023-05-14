@@ -19,7 +19,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "oder_id")
     )
-    List<Oder> list;
+    private List<Oder> list;
 
     public Book() {
     }

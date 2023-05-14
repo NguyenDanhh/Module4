@@ -55,7 +55,7 @@ public class BookController {
         Book book;
         Oder oder = new Oder();
 
-        int codeBook = (int) (Math.random() * (99999 - 10000) + 10000);
+        int codeBook = bookService.getCodeBook();
         Date borrowedTime = new Date();
 
         oder.setCode(codeBook);

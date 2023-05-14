@@ -22,7 +22,14 @@ public class BookService implements IBookService {
         return this .bookRepository.findById(id).get();
     }
 
+    @Override
     public Book createBook(Book book) {
         return bookRepository.save(book);
+    }
+
+    @Override
+    public int getCodeBook(){
+        int codeBook = (int) (Math.random() * (99999 - 10000) + 10000);
+        return codeBook;
     }
 }
