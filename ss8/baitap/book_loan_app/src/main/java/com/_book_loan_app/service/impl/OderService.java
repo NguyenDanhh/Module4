@@ -1,5 +1,6 @@
 package com._book_loan_app.service.impl;
 
+import com._book_loan_app.model.Book;
 import com._book_loan_app.model.Oder;
 import com._book_loan_app.repository.IOderRepository;
 import com._book_loan_app.service.IOderService;
@@ -13,6 +14,7 @@ public class OderService implements IOderService {
 
     @Autowired
     IOderRepository oderRepository;
+
     @Override
     public List<Oder> findAll() {
         return this.oderRepository.findAll();
@@ -21,5 +23,9 @@ public class OderService implements IOderService {
     @Override
     public Oder findById(int id) {
         return this.oderRepository.findById(id).get();
+    }
+    @Override
+    public Oder createOder(Oder oder) {
+        return oderRepository.save(oder);
     }
 }

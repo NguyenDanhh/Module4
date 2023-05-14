@@ -30,6 +30,14 @@ public class Book {
         this.count = count;
     }
 
+    public List<Oder> getList() {
+        return list;
+    }
+
+    public void setList(List<Oder> list) {
+        this.list = list;
+    }
+
     public int getId() {
         return id;
     }
