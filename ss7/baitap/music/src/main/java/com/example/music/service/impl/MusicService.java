@@ -1,6 +1,6 @@
 package com.example.music.service.impl;
 
-import com.example.music.model.MusicDTO;
+import com.example.music.dto.MusicDTO;
 import com.example.music.repository.IMusicRepository;
 import com.example.music.service.IMusicService;
 import org.springframework.beans.factory.annotation.Autowired;

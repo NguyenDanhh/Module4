@@ -1,6 +1,6 @@
 package com.example.music.repository;
 
-import com.example.music.model.MusicDTO;
+import com.example.music.dto.MusicDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.example.music.service;
 
-import com.example.music.model.MusicDTO;
+import com.example.music.dto.MusicDTO;
 
 import java.util.List;
 

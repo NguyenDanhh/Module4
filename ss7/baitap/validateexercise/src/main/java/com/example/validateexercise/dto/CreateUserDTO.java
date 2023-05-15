@@ -19,15 +19,14 @@ public class CreateUserDTO implements Validator {
 
     @NotBlank
     @Size(min = 10, max = 11, message = "Nhập số điện thoại lớn hơn 10 và bé hơn 11 số")
-    @Pattern(regexp = "^([0-9]{10})$")
+    @Pattern(regexp = "^([0-9]{10})$" , message = "")
     private String phoneNumber;
-    @NotNull
     @NotBlank
-    @Min(value = 18, message = "Độ tuổi lớn hơn 18")
+    @Size(min = 18, max = 100,message = "Độ tuổi lớn hơn 18")
     private String age;
 
    @NotBlank(message = "Nhập email")
-   @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]+", message = "Nhập đúng định dạng vd :abc@gmail.com")
+   @Email(message = "Email phải hợp lệ")
     private String email;
 
     public CreateUserDTO() {

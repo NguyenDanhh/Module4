@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab97ca18-98d5-4f4b-8417-60f76a53728c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../ss1/thuchanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss1/thuchanh/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/controller/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/controller/MusicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/model/MusicDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/dto/MusicDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/repository/IMusicRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/repository/IMusicRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/service/IMusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/service/IMusicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/service/impl/MusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss7/baitap/music/src/main/java/com/example/music/service/impl/MusicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss7/baitap/validateexercise/src/main/java/com/example/validateexercise/dto/CreateUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss7/baitap/validateexercise/src/main/java/com/example/validateexercise/dto/CreateUserDTO.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2PmvQJ1QQ56SxsSeEPtZHq0m3JP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/codegym/Module4/ss9/thuchanh/practice",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab97ca18-98d5-4f4b-8417-60f76a53728c" name="Changes" comment="" />
+      <created>1684075053712</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684075053712</updated>
+      <workItem from="1684075054796" duration="40000" />
+      <workItem from="1684075872061" duration="5000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

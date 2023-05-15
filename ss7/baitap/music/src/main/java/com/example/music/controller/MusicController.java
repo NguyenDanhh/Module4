@@ -1,6 +1,6 @@
 package com.example.music.controller;
 
-import com.example.music.model.MusicDTO;
+import com.example.music.dto.MusicDTO;
 import com.example.music.service.IMusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
