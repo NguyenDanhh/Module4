@@ -5,9 +5,13 @@
     <title>Shopping Cart</title>
 </head>
 <body>
-<p>
-    <a href="/shop">Shop</a>
-</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/shop}">Home</a>
+        <a th:href="@{/shopping-cart}"><i style="width: 113px; font-size: xx-large ; color: darkslategray"
+                                          class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+</nav>
 <h1>Your Cart</h1>
 <form method="post" th:action="@{/shop}" th:object="${cart}">
     <h3>Total Items: <span th:text="${cart.countItemQuantity()}"></span></h3>

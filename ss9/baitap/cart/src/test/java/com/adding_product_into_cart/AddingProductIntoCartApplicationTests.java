@@ -1,13 +1,13 @@
-package com.example.cart;
+package com.adding_product_into_cart;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CartApplicationTests {
+class AddingProductIntoCartApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
