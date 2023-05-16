@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class BookService implements IBookService {
     @Autowired
-    IBookRepository bookRepository;
+    private IBookRepository bookRepository;
     @Override
     public List<Book> findAll() {
         return bookRepository.findAll();
@@ -27,9 +27,5 @@ public class BookService implements IBookService {
         return bookRepository.save(book);
     }
 
-    @Override
-    public int getCodeBook(){
-        int codeBook = (int) (Math.random() * (99999 - 10000) + 10000);
-        return codeBook;
-    }
+
 }

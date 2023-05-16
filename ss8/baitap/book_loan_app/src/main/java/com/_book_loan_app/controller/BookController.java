@@ -1,37 +1,32 @@
 package com._book_loan_app.controller;
 
+import com._book_loan_app.customexception.CheckCode;
 import com._book_loan_app.model.Book;
 import com._book_loan_app.model.Oder;
 import com._book_loan_app.service.IBookService;
 import com._book_loan_app.service.IOderService;
+import com._book_loan_app.customexception.CheckBookZero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("")
 public class BookController {
     @Autowired
-    IBookService bookService;
+    private IBookService bookService;
     @Autowired
-    IOderService oderService;
+    private IOderService oderService;
 
     @GetMapping
     public String getBooks(Model model) {
         model.addAttribute("listBook", this.bookService.findAll());
-
         return "homepage";
-    }
-    @GetMapping("/codeBook/{id}")
-    public String codeBooks(@PathVariable(name = "id") int id,Model model){
-        model.addAttribute("codebook" ,this.oderService.findById(id));
-        return "/codebook";
     }
 
     @GetMapping("/books")
@@ -39,23 +34,37 @@ public class BookController {
         model.addAttribute("listBook", this.bookService.findAll());
         return "book";
     }
-    @GetMapping("/form-givebookback")
-    public String showFormgiveBookBack(){
+
+    @GetMapping("/form-givebookback/{id}")
+    public String showFormgiveBookBack(@PathVariable(value = "id") int id, Model model) {
+        Book book = this.bookService.findById(id);
+        model.addAttribute("book", book);
         return "/givebookback";
     }
 
     @GetMapping("/givebookback")
-    public String giveBookBack(){
-
-        return "redirect:/";
+    public String giveBookBack(@RequestParam(value = "code") int code ,
+                               @RequestParam(value = "id") int id ) throws CheckCode {
+        Book book = bookService.findById(id);
+        List<Oder> list = oderService.findAll();
+        for (int i = 0; i < list.size(); i++) {
+            if(code == list.get(i).getCode()){
+                book.setCount(book.getCount() + 1);
+                bookService.createBook(book);
+                return "redirect:/";
+            }
+        }
+        throw new CheckCode();
     }
 
+
     @GetMapping("/oder/{id}")
-    public String oderBook(@PathVariable(name = "id") int id, Model model) throws Exception {
+    public String oderBook(@PathVariable(name = "id") int id, Model model) throws CheckBookZero {
         Book book;
         Oder oder = new Oder();
 
-        int codeBook = bookService.getCodeBook();
+        int codeBook = oderService.getCodeBook();
+        model.addAttribute("codeBook", codeBook);
         Date borrowedTime = new Date();
 
         oder.setCode(codeBook);
@@ -64,8 +73,8 @@ public class BookController {
         model.addAttribute("listOder", this.bookService.findAll());
 
         book = this.bookService.findById(id);
-        if(book.getCount() == 0 ){
-            throw  new Exception();
+        if (book.getCount() == 0) {
+       throw new CheckBookZero();
         }
         book.setCount(book.getCount() - 1);
         List<Oder> oders = book.getList();
@@ -75,12 +84,16 @@ public class BookController {
         this.bookService.createBook(book);
 
 
-        return "redirect:/";
+        return "homepage";
     }
 
-    @ExceptionHandler(Exception.class)
-    public ModelAndView error(){
+    @ExceptionHandler(CheckBookZero.class)
+    public ModelAndView checkBook() {
         ModelAndView modelAndView = new ModelAndView("errors");
         return modelAndView;
+    }
+    @ExceptionHandler(CheckCode.class)
+    public String checkCode() {
+        return "checkcode";
     }
 }

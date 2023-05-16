@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href="@{/books}">Quản lý sách </a>
+          <a class="nav-link active" aria-current="page" th:href="@{/books}">Quản lý sách</a>
         </li>
       </ul>
     </div>
@@ -44,6 +44,7 @@
       <td th:text="${book.nameBook}"></td>
       <td th:text="${book.count}"></td>
       <td>
+
         <button type="button" class="btn btn-secondary">
           <a th:href="@{/oder/{id}(id = ${book.id})}" style="text-decoration: none ; color: white">Chỉnh sửa</a>
         </button>

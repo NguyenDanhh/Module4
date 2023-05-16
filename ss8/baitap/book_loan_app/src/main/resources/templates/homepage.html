@@ -26,7 +26,7 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/books}">Quản lý sách </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/form-givebookback}">Trả sách </a>
+
                 </li>
             </ul>
         </div>
@@ -47,15 +47,33 @@
             <td th:text="${book.nameBook}"></td>
             <td th:text="${book.count}"></td>
             <td>
+                <button type="button" class="btn btn-secondary" th:attr="onclick=|goDetail('${book.getId}')|" >
+                    Chi tiết
+                </button>
                 <button type="button" class="btn btn-secondary">
                     <a th:href="@{/oder/{id}(id = ${book.id})}" style="text-decoration: none ; color: white"
-                    >Mượn</a>
+                      onclick="getCodeBook(${codeBook})">
+                        Mượn
+                    </a>
                 </button>
+            </td>
+            <td>
+                <a class="nav-link active" aria-current="page"
+                   th:href="@{/form-givebookback/{id}(id=${book.getId()})}">Trả sách </a>
             </td>
         </tr>
         </tbody>
 
     </table>
 </div>
+<script>
+    function goDetail(id){
+        window.location.href='/detail/' + id
+    }
+
+    function getCodeBook(code){
+        alert('Mã mượn sách của bạn là ' + code)
+    }
+</script>
 </body>
 </html>

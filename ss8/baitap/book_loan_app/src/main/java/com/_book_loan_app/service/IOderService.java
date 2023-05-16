@@ -9,4 +9,8 @@ public interface IOderService {
     List<Oder> findAll();
     Oder findById(int id);
     Oder createOder(Oder oder);
+
+    int getCodeBook();
+//    int getCodeOder(int code);
+
 }

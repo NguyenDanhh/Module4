@@ -22,7 +22,6 @@ public class CreateUserDTO implements Validator {
     @Pattern(regexp = "^([0-9]{10})$" , message = "")
     private String phoneNumber;
     @NotBlank
-    @Size(min = 18, max = 100,message = "Độ tuổi lớn hơn 18")
     private String age;
 
    @NotBlank(message = "Nhập email")
