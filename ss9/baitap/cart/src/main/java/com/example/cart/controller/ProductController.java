@@ -17,17 +17,22 @@ import java.util.Map;
 @Controller
 @Component
 @RequestMapping("")
+@SessionAttributes("cart")
 public class ProductController {
     private static final String SEPARATOR = "-";
     @Autowired
     private IProductService productService ;
+    @ModelAttribute("cart")
+    public Cart setUpCart() {
+        return new Cart();
+    }
     @GetMapping
     public String pageProduct(Model model){
         model.addAttribute("listProduct" , productService.getListProduct());
         return "products";
     }
     @GetMapping("/addtocart/{id}")
-    public String addToCart(@PathVariable int id, @SessionAttribute(name = "cart") Cart cart , Model model) {
+    public String addToCart(@PathVariable int id, @SessionAttribute(name = "cart") Cart cart) {
         boolean addProduct = false;
         Product product = productService.findById(id);
         for (Map.Entry<Integer , Integer> entry : cart.getSelectedProducts().entrySet()){
@@ -54,9 +59,14 @@ public class ProductController {
             String idString;
             String[] array = ids.split(SEPARATOR);
             if(array.length >= 3){
-                idString = id
+                idString = id + SEPARATOR + array[0] + SEPARATOR + array[1];
+            }else {
+                idString = id + SEPARATOR + ids;
             }
+            cookie = new Cookie("seenProductId" , idString);
         }
+        cookie.setMaxAge(60*60*24*2);
+        response.addCookie(cookie);
         return "detail";
     }
 }
