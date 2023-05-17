@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <h5 class="card-title" th:text="${product.name}"></h5>
                         <p class="card-text" th:text="${product.price}"></p>
-                        <a th:href="@{/add/{id}(id = ${product.id})}" class="btn btn-primary">Thêm vào giỏ hàng </a>
+                        <a th:href="@{/add/__${product.id}__(action='show')}" class="btn btn-primary">Thêm vào giỏ hàng </a>
                         <a th:href="@{/shop/detail/{id}(id =${product.id})}" class="btn btn-primary">Chi tiết </a>
                     </div>
                 </div>

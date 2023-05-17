@@ -48,4 +48,17 @@ public class ProductController {
         modelAndView.addObject("product", productService.findById(id).get());
         return modelAndView;
     }
+    public String deleteProduct(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
+        Optional<Product> productOptional = productService.findById(id);
+        if (!productOptional.isPresent()) {
+            return "/error.404";
+        }
+        if (action.equals("show")) {
+            cart.removeProduct(productOptional.get());
+            return "redirect:/shopping-cart";
+        }
+        cart.addProduct(productOptional.get());
+        return "redirect:/shop";
+    }
+
 }
