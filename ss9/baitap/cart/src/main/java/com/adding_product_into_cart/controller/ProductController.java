@@ -48,17 +48,22 @@ public class ProductController {
         modelAndView.addObject("product", productService.findById(id).get());
         return modelAndView;
     }
+
+    @GetMapping("delete/{id}")
     public String deleteProduct(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
         Optional<Product> productOptional = productService.findById(id);
         if (!productOptional.isPresent()) {
             return "/error.404";
         }
         if (action.equals("show")) {
-            cart.removeProduct(productOptional.get());
+            cart.deleteProduct(productOptional.get());
             return "redirect:/shopping-cart";
         }
         cart.addProduct(productOptional.get());
         return "redirect:/shop";
     }
-
+    @GetMapping("successfully")
+    public String bySuccess(){
+        return "success";
+    }
 }

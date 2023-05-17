@@ -19,10 +19,7 @@ public class Blog {
     private String detail;
 
     @ManyToOne
-    @JoinTable(name = "address_person",
-            joinColumns = @JoinColumn(name = "address_id"),
-            inverseJoinColumns = @JoinColumn(name = "person_id")
-    )
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Blog() {
