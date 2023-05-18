@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script src="
+https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
+"></script>
+<script>
+    function getList() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/blogs",
+            success: function (data) {
+                let content = '';
+                for (let element of data) {
+                    content += `    <tr>\n' +
+                        '        <td>${element.name}</td>\n' +
+                        '        <td>${element.date}</td>\n' +
+                        '        <td>${element.detail}</td>\n' +
+                        '        <td>${element.category.nameCategory}</td>\n' +
+                        '    </tr>`;
+                }
+                $('#blogList').html(content);
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        getList()
+    });
+
+    nameSearch = $('#search').val()
+
+    function submitSearch(nameSearch) {
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8080/blogs/search/' + nameSearch,
+            success: function (data) {
+                console.log(data);
+                let content = '';
+                for (let element of data) {
+                    content += `    <tr>\n' +
+                        '       <td>${element.name}</td>\n' +
+                        '        <td>${element.date}</td>\n' +
+                        '        <td>${element.detail}</td>\n' +
+                        '        <td>${element.category.nameCategory}</td>\n' +
+                        '    </tr>`;
+                }
+                $('#blogList').html(content);
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        getList()
+    });
+
+    function showMoreItems() {
+        page += 1;
+        $.ajax({
+            url: 'http://localhost:8080/blogs?page=' + (page),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=utf'
+            },
+            type: 'GET',
+            success: (event) => {
+
+                let blogs = '';
+                for(const  element of event.content){
+                    blogs += `
+                    <tr>\\n' +
+                        '       <td>${element.name}</td>\\n' +
+                        '        <td>${element.date}</td>\\n' +
+                        '        <td>${element.detail}</td>\\n' +
+                        '        <td>${element.category.nameCategory}</td>\\n' +
+                        '    </tr>\`;`
+                }
+                $("#blogs").html(blogs);
+            },
+        });
+        event.preventDefault();
+    }
+</script>
+<h1>Blog List</h1>
+<input id="search" type="text">
+<button onclick="submitSearch()">Search</button>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Date</td>
+        <td>Detail</td>
+        <td>Category</td>
+    </tr>
+    <tr id="blogList"></tr>
+</table>
+<button onclick="showMoreItems()">Tải  thêm</button>
+
+</body>
+</html>
+
