@@ -23,6 +23,11 @@ public class BlogService implements IBlogService {
     }
 
     @Override
+    public List<Blog> findAll() {
+        return this.blogRepository.findAll();
+    }
+
+    @Override
     public Blog create(Blog blog) {
         return this.blogRepository.save(blog);
     }

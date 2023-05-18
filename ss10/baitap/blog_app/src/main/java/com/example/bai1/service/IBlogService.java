@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface IBlogService {
     Page<Blog> findAll(Pageable pageable);
+    List<Blog> findAll();
     Blog create(Blog blog);
     void delete(int id );
     Optional<Blog> findById(int id);

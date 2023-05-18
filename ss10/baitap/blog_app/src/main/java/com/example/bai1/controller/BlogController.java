@@ -22,9 +22,16 @@ public class BlogController {
     @Autowired
     private IBlogService blogService;
 
-    @GetMapping
+    @GetMapping("/showmore")
     public ResponseEntity<Page<Blog>> findAll(@RequestParam(value = "page") int page ,@PageableDefault(size = 1) Pageable pageable) {
         Page<Blog> list = blogService.findAll(PageRequest.of(0,page));
+        if(list.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }@GetMapping()
+    public ResponseEntity<List<Blog>> findAll() {
+        List<Blog> list = blogService.findAll();
         if(list.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
