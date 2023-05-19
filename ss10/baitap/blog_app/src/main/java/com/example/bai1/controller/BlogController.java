@@ -4,13 +4,13 @@ import com.example.bai1.model.Blog;
 import com.example.bai1.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,13 +23,14 @@ public class BlogController {
     private IBlogService blogService;
 
     @GetMapping("/showmore")
-    public ResponseEntity<Page<Blog>> findAll(@RequestParam(value = "page") int page ,@PageableDefault(size = 1) Pageable pageable) {
-        Page<Blog> list = blogService.findAll(PageRequest.of(0,page));
+    public ResponseEntity<Page<Blog>> findAll(@PageableDefault(size = 1) Pageable pageable) {
+        Page<Blog> list = blogService.findAll(pageable);
         if(list.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(list, HttpStatus.OK);
-    }@GetMapping()
+    }
+    @GetMapping()
     public ResponseEntity<List<Blog>> findAll() {
         List<Blog> list = blogService.findAll();
         if(list.isEmpty()){
@@ -56,11 +57,11 @@ public class BlogController {
         blog.setId(blogUpdate.get().getId());
         return new ResponseEntity<>(blogService.create(blog), HttpStatus.OK);
     }
-    @GetMapping("/search/{searchName}")
-    public ResponseEntity<List<Blog>> searchByTypeBlog(@PathVariable(name = "searchName")String searchName){
-        List<Blog> blog = blogService.findByName(searchName);
-        if (!blog.isEmpty()) {
-            return new ResponseEntity<>(blog,HttpStatus.NOT_FOUND);
+    @GetMapping("/search")
+    public ResponseEntity<List<Blog>> searchByTypeBlog(@RequestParam(name = "name_category")String nameCategory){
+        List<Blog> blog = blogService.findByName(nameCategory);
+        if (blog.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(blog, HttpStatus.OK);
     }

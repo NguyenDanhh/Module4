@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 
 </head>
 <body>
-<script src="
-https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
-"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
 <script>
+    let page=0;
     function getList() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/blogs",
+            url: `http://localhost:8080/blogs/showmore?page=${page}`,
             success: function (data) {
                 let content = '';
-                for (let element of data) {
+                for (let element of data.content) {
                     content += `    <tr>\n' +
                         '        <td>${element.name}</td>\n' +
                         '        <td>${element.date}</td>\n' +
@@ -24,7 +23,8 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
                         '        <td>${element.category.nameCategory}</td>\n' +
                         '    </tr>`;
                 }
-                $('#blogList').html(content);
+                $('#blogList').append(content);
+                page++;
             }
         })
     }
@@ -33,12 +33,12 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
         getList()
     });
 
-    nameSearch = $('#search').val()
 
-    function submitSearch(nameSearch) {
+    function submitSearch() {
+        let nameSearch = $('#search').val();
         $.ajax({
             type: "GET",
-            url: 'http://localhost:8080/blogs/search/' + nameSearch,
+            url: 'http://localhost:8080/blogs/search?name_category=' + nameSearch,
             success: function (data) {
                 console.log(data);
                 let content = '';
@@ -59,36 +59,12 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
         getList()
     });
 
-    function showMoreItems() {
-        page += 1;
-        $.ajax({
-            url: 'http://localhost:8080/blogs?page=' + (page),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf'
-            },
-            type: 'GET',
-            success: (event) => {
-
-                let blogs = '';
-                for(const  element of event.content){
-                    blogs += `
-                    <tr>\\n' +
-                        '       <td>${element.name}</td>\\n' +
-                        '        <td>${element.date}</td>\\n' +
-                        '        <td>${element.detail}</td>\\n' +
-                        '        <td>${element.category.nameCategory}</td>\\n' +
-                        '    </tr>\`;`
-                }
-                $("#blogs").html(blogs);
-            },
-        });
-        event.preventDefault();
-    }
 </script>
 <h1>Blog List</h1>
+
 <input id="search" type="text">
 <button onclick="submitSearch()">Search</button>
+
 <table>
     <tr>
         <td>Name</td>
@@ -98,7 +74,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
     </tr>
     <tr id="blogList"></tr>
 </table>
-<button onclick="showMoreItems()">Tải  thêm</button>
+<button onclick="getList()">Tải thêm</button>
 
 </body>
 </html>
